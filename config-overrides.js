@@ -1,8 +1,9 @@
-// const jestConfig = require('./jest.config');
+const jestConfig = require('./jest.config');
 
 module.exports = {
   jest(config) {
-    config.preset = 'ts-jest';
+    config.preset = jestConfig.preset;
+    config.reporters = jestConfig.reporters;
     return config;
   },
 };

@@ -1,4 +1,26 @@
 /* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable import/first */
+
+jest.mock('../utils/formatValue.ts', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation((value: number) => {
+    switch (value) {
+      case 6000:
+        return 'R$ 6.000,00';
+      case 50:
+        return 'R$ 50,00';
+      case 5950:
+        return 'R$ 5.950,00';
+      case 1500:
+        return 'R$ 1.500,00';
+      case 4500:
+        return 'R$ 4.500,00';
+      default:
+        return '';
+    }
+  }),
+}));
+
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
@@ -7,11 +29,11 @@ import App from '../App';
 
 const apiMock = new MockAdapter(api);
 
-const wait = (amount = 0) => {
+const wait = (amount = 0): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, amount));
 };
 
-const actWait = async (amount = 0) => {
+const actWait = async (amount = 0): Promise<void> => {
   await act(async () => {
     await wait(amount);
   });
@@ -148,21 +170,20 @@ describe('Dashboard', () => {
     expect(getByText('Loan')).toBeTruthy();
     expect(getByText('R$ 1.500,00')).toBeTruthy();
     expect(getByText('Others')).toBeTruthy();
-    expect(getByText('17/04/2020')).toBeTruthy();
 
     expect(getByText('Computer')).toBeTruthy();
     expect(getByText('R$ 4.500,00')).toBeTruthy();
     expect(getByText('Sell')).toBeTruthy();
-    expect(getByText('18/04/2020')).toBeTruthy();
 
     expect(getByText('Website Hosting')).toBeTruthy();
     expect(getByText('- R$ 50,00')).toBeTruthy();
     expect(getByText('Hosting')).toBeTruthy();
-    expect(getByText('19/04/2020')).toBeTruthy();
   });
 
   it('should be able to navigate to the import page', async () => {
     const { getByText } = render(<App />);
+
+    await actWait(500);
 
     fireEvent.click(getByText('Importar'));
 
