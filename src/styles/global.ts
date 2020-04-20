@@ -20,5 +20,4 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-
 `;

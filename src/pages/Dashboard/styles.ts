@@ -5,7 +5,8 @@ interface CardProps {
 }
 
 export const Container = styled.div`
-  width: 1120px;
+  width: 100%;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 40px 20px;
 `;
@@ -50,10 +51,8 @@ export const TableContainer = styled.section`
   margin-top: 64px;
 
   table {
-    border-collapse: collapse;
     width: 100%;
-    border-collapse: separate !important;
-    border-spacing: 0 8px !important;
+    border-spacing: 0 8px;
 
     th {
       color: #969cb3;
@@ -65,9 +64,8 @@ export const TableContainer = styled.section`
     }
 
     td {
-      border: 1px solid #ddd;
       padding: 20px 32px;
-      border-color: transparent !important;
+      border: 0;
       background: #fff;
       font-size: 16px;
       font-weight: normal;
@@ -86,7 +84,7 @@ export const TableContainer = styled.section`
       }
     }
 
-    td:nth-child(1) {
+    td:first-child {
       border-radius: 8px 0 0 8px;
     }
 

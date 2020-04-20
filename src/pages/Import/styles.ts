@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
-  width: 736px;
+  width: 100%;
+  max-width: 736px;
   margin: 0 auto;
   padding: 40px 20px;
 `;
@@ -45,5 +47,10 @@ export const Footer = styled.section`
     border-radius: 5px;
     padding: 15px 80px;
     border: 0;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: ${shade(0.2, '#ff872c')};
+    }
   }
 `;
