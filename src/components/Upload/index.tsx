@@ -4,7 +4,7 @@ import Dropzone from 'react-dropzone';
 import { DropContainer, UploadMessage } from './styles';
 
 interface UploadProps {
-  onUpload: any;
+  onUpload: Function;
 }
 
 const Upload: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
@@ -27,7 +27,7 @@ const Upload: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
 
   return (
     <>
-      <Dropzone accept="text/csv" onDropAccepted={onUpload}>
+      <Dropzone accept="text/csv" onDropAccepted={() => onUpload()}>
         {({ getRootProps, getInputProps, isDragActive, isDragReject }): any => (
           <DropContainer
             {...getRootProps()}
