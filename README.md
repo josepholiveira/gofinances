@@ -78,11 +78,9 @@ category: Category;
 
 ### Layout da aplicação
 
-Essa aplicação possui um layout que você pode seguir para conseguir visualizar o seu funcionamento, e para te ajudar na estilização.
+Essa aplicação possui um layout que você pode seguir para conseguir visualizar o seu funcionamento.
 
 O layout pode ser acessado através da página do Figma, no [seguinte link](https://www.figma.com/file/EgOhyj1Inz14dhWGVhRlhr/GoFinances?node-id=1%3A863).
-
-**Dica**: Aproveite o layout para treinar tudo o que você aprendeu aqui sobre animações utilizando CSS, seja em animações de loading ou hover, e compartilhe o resultado final no seu linkedin.
 
 ### Funcionalidades da aplicação
 
@@ -94,7 +92,11 @@ Agora que você já está com o template clonado e pronto para continuar, você 
 
 - **`Exibir o balance da sua API`**: Sua página `Dashboard`, você deve exibir o balance que é retornado do seu backend, contendo o total geral, junto ao total de entradas e saídas.
 
-- **`Importar arquivos CSV`**: Na sua página `Import`, você deve permitir o envio de um arquivo no formato `csv` para o seu backend, que irá fazer a importação das transações para o seu banco de dados. O arquivo csv deve seguir o seguinte [modelo]().
+- **`Importar arquivos CSV`**: Na sua página `Import`, você deve permitir o envio de um arquivo no formato `csv` para o seu backend, que irá fazer a importação das transações para o seu banco de dados. O arquivo csv deve seguir o seguinte [modelo](https://github.com/Rocketseat/bootcamp-gostack-desafios/blob/master/desafio-database-upload/assets/file.csv).
+
+**Dica**: Deixamos disponível um componente chamado `Upload` na pasta `components` para você ter já preparado uma opção de drag-n-drop para o upload de arquivos.
+
+**Dica 2**: Utilize o [FormData()](https://developer.mozilla.org/pt-BR/docs/Web/API/FormData/FormData) para conseguir enviar o seu arquivo para o seu backend.
 
 ### Específicação dos testes
 
