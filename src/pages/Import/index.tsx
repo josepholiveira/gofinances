@@ -21,7 +21,7 @@ interface FileProps {
 const Import: React.FC = () => {
   const [uploadedFiles, setUploadedFiles] = useState<FileProps[]>([]);
 
-  async function uploadFile(): Promise<void> {
+  async function submitFile(): Promise<void> {
     const data = new FormData();
 
     if (!uploadedFiles.length) return;
@@ -36,8 +36,8 @@ const Import: React.FC = () => {
     }
   }
 
-  function handleUpload(files: any): void {
-    const uploadFiles = files.map((file: any) => ({
+  function handleUpload(files: File[]): void {
+    const uploadFiles = files.map((file: File) => ({
       file,
       name: file.name,
       readableSize: filesize(file.size),
@@ -60,7 +60,7 @@ const Import: React.FC = () => {
               <img src={alert} alt="Alert" />
               Permitido apenas arquivos CSV
             </p>
-            <button onClick={uploadFile} type="button">
+            <button onClick={submitFile} type="button">
               Enviar
             </button>
           </Footer>

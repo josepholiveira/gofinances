@@ -71,43 +71,48 @@ const Dashboard: React.FC = () => {
               <p>Entradas</p>
               <img src={income} alt="Income" />
             </header>
-            <h1>{balance?.income}</h1>
+            <h1 data-testid="balance-income">{balance?.income}</h1>
           </Card>
           <Card>
             <header>
               <p>Saídas</p>
               <img src={outcome} alt="Outcome" />
             </header>
-            <h1>{balance?.outcome}</h1>
+            <h1 data-testid="balance-outcome">{balance?.outcome}</h1>
           </Card>
           <Card total>
             <header>
               <p>Total</p>
               <img src={total} alt="Total" />
             </header>
-            <h1>{balance?.total}</h1>
+            <h1 data-testid="balance-total">{balance?.total}</h1>
           </Card>
         </CardContainer>
 
         <TableContainer>
           <table>
-            <tr>
-              <th>Título</th>
-              <th>Preço</th>
-              <th>Categoria</th>
-              <th>Data</th>
-            </tr>
-
-            {transactions.map((transaction) => (
+            <thead>
               <tr>
-                <td className="title">{transaction.title}</td>
-                <td className={transaction.type}>
-                  {transaction?.formattedValue}
-                </td>
-                <td>{transaction.category.title}</td>
-                <td>{transaction.formattedDate}</td>
+                <th>Título</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Data</th>
               </tr>
-            ))}
+            </thead>
+
+            <tbody>
+              {transactions.map((transaction) => (
+                <tr key={transaction.id}>
+                  <td className="title">{transaction.title}</td>
+                  <td className={transaction.type}>
+                    {transaction.type === 'outcome' && '- '}
+                    {transaction?.formattedValue}
+                  </td>
+                  <td>{transaction.category.title}</td>
+                  <td>{transaction.formattedDate}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </TableContainer>
       </Container>

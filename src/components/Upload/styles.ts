@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 interface UploadProps {
   isDragActive: boolean;
@@ -25,8 +25,11 @@ export const DropContainer = styled.div.attrs({
 
   transition: height 0.2s ease;
 
-  ${(props: UploadProps): any => props.isDragActive && dragActive}
-  ${(props: UploadProps): any => props.isDragReject && dragReject}
+  ${(props: UploadProps): false | FlattenSimpleInterpolation =>
+    props.isDragActive && dragActive}
+
+  ${(props: UploadProps): false | FlattenSimpleInterpolation =>
+    props.isDragReject && dragReject}
 `;
 
 const messageColors = {
