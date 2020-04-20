@@ -7,9 +7,10 @@ import total from '../../assets/total.svg';
 import api from '../../services/api';
 
 import Header from '../../components/Header';
-import { Container, CardContainer, Card, TableContainer } from './styles';
 
 import formatValue from '../../utils/formatValue';
+
+import { Container, CardContainer, Card, TableContainer } from './styles';
 
 interface Transaction {
   id: string;
